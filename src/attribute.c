@@ -358,7 +358,7 @@ attribute_interface_dialog (gerbv_HID_Attribute * attrs,
 		   */
 		  ghid_spin_button (hbox, &widget, attrs[j].default_val.int_value,
 				    attrs[j].min_val, attrs[j].max_val, 1.0, 1.0, 0, 0,
-				    intspinner_changed_cb,
+				    (void(*)())intspinner_changed_cb,
 				    &(attrs[j].default_val.int_value), FALSE, NULL);
 		  
 		  gtk_tooltips_set_tip (tips, widget, _(attrs[j].help_text), NULL);
@@ -380,7 +380,7 @@ attribute_interface_dialog (gerbv_HID_Attribute * attrs,
 		  ghid_spin_button (hbox, &widget, attrs[j].default_val.real_value,
 				    attrs[j].min_val, attrs[j].max_val, 0.01, 0.01, 3,
 				    0, 
-				    dblspinner_changed_cb,
+				    (void(*)(void))dblspinner_changed_cb,
 				    &(attrs[j].default_val.real_value), FALSE, NULL);
 		  
 		  gtk_tooltips_set_tip (tips, widget, _(attrs[j].help_text), NULL);
@@ -412,7 +412,7 @@ attribute_interface_dialog (gerbv_HID_Attribute * attrs,
 		  /* put this in a check button */
 		  ghid_check_button_connected (vbox, &widget,
 					       attrs[j].default_val.int_value,
-					       TRUE, FALSE, FALSE, 0, set_flag_cb,
+					       TRUE, FALSE, FALSE, 0, (void(*)(void))set_flag_cb,
 					       &(attrs[j].default_val.int_value),
 					       _(attrs[j].name));
 		  gtk_tooltips_set_tip (tips, widget, _(attrs[j].help_text), NULL);
