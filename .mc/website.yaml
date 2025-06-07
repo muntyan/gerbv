@@ -1,8 +1,0 @@
----
-base: ubuntu:22.04
-install:
- - doxygen
- - m4
- - make
----
-
